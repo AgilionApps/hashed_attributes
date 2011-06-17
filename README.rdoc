@@ -25,7 +25,7 @@ Initializes preferences as a hash
   }
 
 == Usage
-Hash keys are getter/setter methods on the model.
+Hash keys are made available as getter/setter methods on the model
 
   person = Person.new(:theme=>"molokai", :plan => "pro", :favorite_color=>"orange")
   {
@@ -41,7 +41,7 @@ Hash keys are getter/setter methods on the model.
        :updated_at => nil
   }
 
-Methods can be used normally and are stored in the preferences hash.
+Methods can be used normally and are stored in the preferences hash
   person.theme = 'the blue theme'
   person.plan  = 'pro account'
   person.favorite_color = 'black'
