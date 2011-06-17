@@ -1,12 +1,15 @@
-.h1 Hashed Attributes
-
+= Hashed Attributes
 
 <tt>
+# app/models/person.rb
 class Person < ActiveRecord::Base
   hashed_attributes :preferences, :theme, :plan, :favorite_color
 end
+</tt>
 
-person = Person.new
+== Initiazation
+<tt>
+Person.new
 # => <Person:0x102c61918> {
              :id => nil,
            :name => nil,
@@ -15,11 +18,15 @@ person = Person.new
      :created_at => nil,
      :updated_at => nil
 }
+
 </tt>
 
+
+== Basic usage
 Initializes preferences as a hash, instead of nil. Attribute keys for preferences hash are getters/setters directly on the person class.
 
 <tt>
+# Initialize new person
 person = Person.new(:theme=>"molokai", :plan => "pro", :favorite_color=>"orange")
 #<Person:0x102b6a500> {
              :id => nil,
@@ -33,11 +40,9 @@ person = Person.new(:theme=>"molokai", :plan => "pro", :favorite_color=>"orange"
      :created_at => nil,
      :updated_at => nil
 }
-</tt>
 
-<tt>
+#
 person.theme = 'the blue theme'
 person.plan  = 'pro account'
 person.favorite_color = 'black'
-
 </tt>
