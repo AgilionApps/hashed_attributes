@@ -9,8 +9,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Sean Behan"]
   s.email       = ["bseanvt@gmail.com"]
   s.homepage    = ""
-  s.summary     = %q{Simple key/value store for attributes serialized in hash.}
-  s.description = %q{This gem will let you extend active record}
+  s.summary     = %q{Key/value store...}
+  s.description = %q{Key/value store...}
 
   s.rubyforge_project = "hashed_attributes"
 
