@@ -12,7 +12,7 @@ In the model you declare the column name and a list of attributes the hash will 
     hashed_attributes :preferences, :theme, :plan, :favorite_color
   end
 
-== Initiazation
+== Initialization
 Initializes preferences as a hash
   Person.new
   {
