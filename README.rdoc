@@ -1,10 +1,11 @@
 = Hashed Attributes
 
 Requires a column to be used for a serialized hash
-# db/migrations/****_create_people.rb
+
+  # db/migrations/****_create_people.rb
   t.text :preferences
 
-# app/models/person.rb
+  # app/models/person.rb
   class Person < ActiveRecord::Base
     hashed_attributes :preferences, :theme, :plan, :favorite_color
   end
