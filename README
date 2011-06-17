@@ -1,0 +1,37 @@
+= Hashed Attributes
+
+
+class Person < ActiveRecord::Base
+  hashed_attributes :preferences, :theme, :plan, :favorite_color
+end
+
+person = Person.new
+# => <Person:0x102c61918> {
+             :id => nil,
+           :name => nil,
+    :preferences => {},
+         :emails => nil,
+     :created_at => nil,
+     :updated_at => nil
+}
+
+Initializes preferences as a hash, instead of nil. Attribute keys for preferences hash are getters/setters directly on the person class.
+
+person = Person.new(:theme=>"molokai", :plan => "pro", :favorite_color=>"orange")
+#<Person:0x102b6a500> {
+             :id => nil,
+           :name => nil,
+    :preferences => {
+        :favorite_color => "orange",
+                 :theme => "molokai",
+                  :plan => "pro"
+    },
+         :emails => nil,
+     :created_at => nil,
+     :updated_at => nil
+}
+
+person.theme = 'the blue theme'
+person.plan  = 'pro account'
+person.favorite_color = 'black'
+

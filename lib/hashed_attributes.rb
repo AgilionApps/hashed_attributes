@@ -12,7 +12,7 @@ module HashedAttributes
 
       options.each do |n|
         define_method "#{n}" do
-          get_hashed_attribute_for(name)
+          get_hashed_attribute_for(n)
         end
 
         define_method "#{n}=" do |arg|
@@ -25,7 +25,7 @@ module HashedAttributes
       end
 
       self.after_initialize do
-        self[hashed_attributes_column] = {} if self[hashed_attributes_column].nil?
+        initialize_hashed_attributes
       end
     end
   end
@@ -36,7 +36,12 @@ module HashedAttributes
     end
 
     def set_hashed_attribute_for(key,value)
+      initialize_hashed_attributes
       self[hashed_attributes_column][key]=value
+    end
+
+    def initialize_hashed_attributes
+      self[hashed_attributes_column] = {} if self[hashed_attributes_column].nil?
     end
   end
 
