@@ -1,12 +1,14 @@
 = Hashed Attributes
-  # app/models/person.rb
-  class Person < ActiveRecord::Base
-    hashed_attributes :preferences, :theme, :plan, :favorite_color
-  end
+
+# app/models/person.rb
+class Person < ActiveRecord::Base
+  hashed_attributes :preferences, :theme, :plan, :favorite_color
+end
 
 == Initiazation
+Initializes preferences as a hash
   Person.new
-  # => <Person:0x102c61918> {
+  {
                :id => nil,
              :name => nil,
       :preferences => {},
@@ -15,12 +17,11 @@
        :updated_at => nil
   }
 
-== Basic usage
-Initializes preferences as a hash, instead of nil. Attribute keys for preferences hash are getters/setters directly on the person class.
+== Usage
+Hash keys are getter/setter methods on the model.
 
-  # Initialize new person
   person = Person.new(:theme=>"molokai", :plan => "pro", :favorite_color=>"orange")
-  #<Person:0x102b6a500> {
+  {
                :id => nil,
              :name => nil,
       :preferences => {
@@ -33,7 +34,11 @@ Initializes preferences as a hash, instead of nil. Attribute keys for preference
        :updated_at => nil
   }
 
-  #
+Methods can be used normally and are stored in the preferences hash.
   person.theme = 'the blue theme'
   person.plan  = 'pro account'
   person.favorite_color = 'black'
+
+  person.theme
+  # => 'the blue theme'
+
