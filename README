@@ -1,6 +1,7 @@
-= Hashed Attributes
+.h1 Hashed Attributes
 
 
+<tt>
 class Person < ActiveRecord::Base
   hashed_attributes :preferences, :theme, :plan, :favorite_color
 end
@@ -14,9 +15,11 @@ person = Person.new
      :created_at => nil,
      :updated_at => nil
 }
+</tt>
 
 Initializes preferences as a hash, instead of nil. Attribute keys for preferences hash are getters/setters directly on the person class.
 
+<tt>
 person = Person.new(:theme=>"molokai", :plan => "pro", :favorite_color=>"orange")
 #<Person:0x102b6a500> {
              :id => nil,
@@ -30,8 +33,11 @@ person = Person.new(:theme=>"molokai", :plan => "pro", :favorite_color=>"orange"
      :created_at => nil,
      :updated_at => nil
 }
+</tt>
 
+<tt>
 person.theme = 'the blue theme'
 person.plan  = 'pro account'
 person.favorite_color = 'black'
 
+</tt>
