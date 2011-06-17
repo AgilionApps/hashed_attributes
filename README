@@ -1,0 +1,17 @@
+= Hashed Attributes
+
+class Person
+  hashed_attributes :preferences, :theme, :plan, :favorite_color
+end
+
+Person.new
+#<Person:0x102c61918> {
+             :id => nil,
+           :name => nil,
+    :preferences => {},
+         :emails => nil,
+     :created_at => nil,
+     :updated_at => nil
+}
+
+Will let you get and set theme, privacy, plan and favorite_color through the preferences hash
