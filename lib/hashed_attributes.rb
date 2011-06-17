@@ -12,7 +12,7 @@ module HashedAttributes
 
       options.each do |n|
         define_method "#{n}" do
-          get_hashed_attribute_for(name)
+          get_hashed_attribute_for(n)
         end
 
         define_method "#{n}=" do |arg|
@@ -25,24 +25,23 @@ module HashedAttributes
       end
 
       self.after_initialize do
-        self.send("#{hashed_attributes_column}=", self["#{hashed_attributes_column}"].blank? ? {} : self.send("#{hashed_attributes_column}"))
+        initialize_hashed_attributes
       end
     end
   end
 
   module InstanceMethods
     def get_hashed_attribute_for(key)
-      #self[hashed_attributes_column][key]
-      self.send("#{hashed_attributes_column}")[key]
+      self[hashed_attributes_column][key]
     end
 
     def set_hashed_attribute_for(key,value)
-      #initialize_hashed_attributes
-      #self[hashed_attributes_column][key]=value
+      initialize_hashed_attributes
+      self[hashed_attributes_column][key]=value
     end
 
     def initialize_hashed_attributes
-      #self[hashed_attributes_column] = {} if self[hashed_attributes_column].nil?
+      self[hashed_attributes_column] = {} if self[hashed_attributes_column].nil?
     end
   end
 
