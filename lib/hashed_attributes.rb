@@ -8,21 +8,15 @@ module HashedAttributes
     def hashed_attributes name, *options
       include InstanceMethods
 
-      serialize name.to_sym, Hash
+      serialize name, Hash
 
-      options.each do |n|
-        define_method "#{n}" do
-          get_hashed_attribute_for(n)
-        end
+      options.each { |key|
+        define_method(key) { get_hashed_attribute_for(key) }
+        define_method("#{key}=") { |value| set_hashed_attribute_for(key,value) }
+      }
 
-        define_method "#{n}=" do |arg|
-          set_hashed_attribute_for(n,arg)
-        end
-      end
-
-      define_method "hashed_attributes_column" do
-        name
-      end
+      define_method("hashed_attributes_column") { name }
+      define_method("hashed_attributes_keys") { options }
 
       self.after_initialize do
         initialize_hashed_attributes
@@ -31,6 +25,8 @@ module HashedAttributes
   end
 
   module InstanceMethods
+    protected
+
     def get_hashed_attribute_for(key)
       self[hashed_attributes_column][key]
     end
@@ -46,4 +42,5 @@ module HashedAttributes
   end
 
 end
+
 ActiveRecord::Base.send(:include, HashedAttributes)
