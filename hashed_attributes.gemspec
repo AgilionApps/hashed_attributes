@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Sean Behan"]
   s.email       = ["bseanvt@gmail.com"]
-  s.homepage    = ""
+  s.homepage    = "https://github.com/bseanvt/hashed_attributes"
   s.summary     = %q{Key/value store...}
   s.description = %q{Key/value store...}
 
